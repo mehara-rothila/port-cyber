@@ -3,19 +3,18 @@ import React, { useEffect, useState, useCallback } from 'react';
 
 const DotCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [trail, setTrail] = useState([]);
   const [visible, setVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isLink, setIsLink] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
-  const [trailElements, setTrailElements] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if device is mobile
   useEffect(() => {
     const checkMobile = () => {
       const isTouchDevice = (
-        'ontouchstart' in window || 
-        navigator.maxTouchPoints > 0 || 
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
         window.matchMedia('(hover: none)').matches ||
         window.innerWidth <= 768
       );
@@ -29,22 +28,31 @@ const DotCursor = () => {
 
   const handleMouseMove = useCallback((e) => {
     requestAnimationFrame(() => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      const newPosition = { x: e.clientX, y: e.clientY };
+      setPosition(newPosition);
       
-      // Add trail element
-      const newTrail = { x: e.clientX, y: e.clientY, id: Math.random() };
-      setTrailElements(prev => [...prev.slice(-5), newTrail]); // Keep only last 5 elements
+      // Update trail with new position
+      setTrail(prevTrail => {
+        const newTrail = [
+          ...prevTrail,
+          {
+            ...newPosition,
+            id: Date.now(),
+            char: Math.random() > 0.5 ? '1' : '0',
+            color: isLink ? '#FF008C' : '#00F0FF' // Change color based on link hover
+          }
+        ];
+        return newTrail.slice(-20); // Keep last 20 positions for trail
+      });
     });
     if (!visible) setVisible(true);
-  }, [visible]);
+  }, [visible, isLink]);
 
   useEffect(() => {
     if (isMobile) return;
 
     // Add event listeners
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mousedown', () => setIsClicking(true));
-    document.addEventListener('mouseup', () => setIsClicking(false));
     document.addEventListener('mouseleave', () => setVisible(false));
     document.addEventListener('mouseenter', () => setVisible(true));
 
@@ -70,8 +78,6 @@ const DotCursor = () => {
     return () => {
       // Clean up
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mousedown', () => setIsClicking(true));
-      document.removeEventListener('mouseup', () => setIsClicking(false));
       document.removeEventListener('mouseleave', () => setVisible(false));
       document.removeEventListener('mouseenter', () => setVisible(true));
 
@@ -90,48 +96,68 @@ const DotCursor = () => {
   if (isMobile || !visible) return null;
 
   return (
-    <div className="cursor-wrapper" style={{ zIndex: 9999 }}>
-      {/* Trail effect */}
-      {trailElements.map((trail, index) => (
+    <>
+      <style jsx global>{`
+        * {
+          cursor: none !important;
+        }
+
+        @media (hover: none) {
+          * {
+            cursor: auto !important;
+          }
+        }
+
+        @keyframes matrixFloat {
+          0% { transform: translate(-50%, -50%) translateY(0); opacity: 1; }
+          100% { transform: translate(-50%, -50%) translateY(20px); opacity: 0; }
+        }
+      `}</style>
+
+      <div className="cursor-wrapper fixed inset-0 pointer-events-none z-[9999]">
+        {/* Main cursor */}
         <div
-          key={trail.id}
-          className="cursor-trail"
+          className="fixed pointer-events-none z-50 mix-blend-screen transition-transform duration-200"
           style={{
-            left: `${trail.x}px`,
-            top: `${trail.y}px`,
-            opacity: 0.2 * (index / trailElements.length)
+            left: position.x,
+            top: position.y,
+            width: isLink ? '16px' : '12px',
+            height: isLink ? '16px' : '12px',
+            backgroundColor: isLink ? '#FF008C' : '#00F0FF',
+            borderRadius: '50%',
+            transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
+            boxShadow: `0 0 20px ${isLink ? '#FF008C' : '#00F0FF'}`
           }}
         />
-      ))}
-      
-      {/* Main cursor */}
-      <div
-        className={`cursor-dot ${isLink ? 'cursor-dot-link' : ''}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
-      />
-      
-      {/* Cursor ring */}
-      <div
-        className={`cursor-ring ${isHovering ? 'cursor-hovering' : ''} 
-          ${isClicking ? 'cursor-clicking' : ''} ${isLink ? 'cursor-ring-link' : ''}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
-      />
-      
-      {/* Cursor glow */}
-      <div
-        className={`cursor-glow ${isLink ? 'cursor-glow-link' : ''}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
-      />
-    </div>
+
+        {/* Matrix trail */}
+        {trail.map((point, index) => (
+          <div
+            key={point.id}
+            className="fixed pointer-events-none font-mono"
+            style={{
+              left: point.x,
+              top: point.y,
+              width: '14px',
+              height: '14px',
+              color: point.color,
+              opacity: (index + 1) / trail.length * 0.7,
+              transform: 'translate(-50%, -50%)',
+              animation: 'matrixFloat 1s forwards',
+              textShadow: `0 0 5px ${point.color}`,
+              fontSize: '14px',
+              fontWeight: 'bold',
+              mixBlendMode: 'screen',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {point.char}
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

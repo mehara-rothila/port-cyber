@@ -13,7 +13,7 @@ const ThemeToggle = () => {
         transform hover:scale-110 transition-all duration-300 z-50 group
         ${darkMode 
           ? 'bg-black/50 hover:bg-black/70 border border-[#FF008C]/20' 
-          : 'bg-white/50 hover:bg-white/70 border border-[#00F0FF]/20'
+          : 'bg-white/50 hover:bg-white/70 border border-[#00F0FF]/20 shadow-lg'
         }`}
       aria-label="Toggle Dark Mode"
     >

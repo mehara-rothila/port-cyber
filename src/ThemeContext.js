@@ -4,29 +4,36 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(() => {
-    // Check for saved theme preference or system preference
-    const saved = localStorage.getItem('darkMode');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return saved ? JSON.parse(saved) : prefersDark;
-  });
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
-    // Save theme preference
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    
-    // Update document classes
-    if (darkMode) {
-      document.documentElement.classList.add('dark-mode');
-      document.documentElement.classList.remove('light-mode');
+    // Check if theme preference exists in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setDarkMode(savedTheme === 'dark');
     } else {
-      document.documentElement.classList.add('light-mode');
-      document.documentElement.classList.remove('dark-mode');
+      // If no saved preference, check system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
     }
+  }, []);
+
+  useEffect(() => {
+    // Update document classes and localStorage when theme changes
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.style.backgroundColor = '#2D1B69';
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.backgroundColor = '#ffffff';
+    }
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(prev => !prev);
   };
 
   return (
@@ -43,5 +50,3 @@ export const useTheme = () => {
   }
   return context;
 };
-
-export default ThemeContext;
