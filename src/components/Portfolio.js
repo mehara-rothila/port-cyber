@@ -319,7 +319,7 @@ const Portfolio = () => {
                   <Github size={16} className="mr-1" /> View Code
                 </a>
                 <a
-                  href="https://mehara-rothila.netlify.app/"
+                  href="https://portf-cyber.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center transition-colors duration-200 cyberpunk-text ${
