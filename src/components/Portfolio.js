@@ -307,7 +307,7 @@ const Portfolio = () => {
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/mehara-rothila/portfolio"
+                  href="https://github.com/mehara-rothila/port-cyber"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center transition-colors duration-200 cyberpunk-text ${
