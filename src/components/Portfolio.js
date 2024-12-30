@@ -318,111 +318,277 @@ const Portfolio = () => {
       ))}
     </div>
   </div>
-</section>{/* Projects Section */}
-<section id="projects" className="cyberpunk-section py-16 md:py-20">
-  <div className="max-w-7xl mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 cyberpunk-text">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF008C] to-[#00F0FF] animate-text-shimmer">
-        Projects
-      </span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      {/* Project 1 */}
-      <div className={`cyberpunk-card p-5 md:p-6 rounded-xl transform hover:-translate-y-2 
-        transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-          <h3 className="text-lg md:text-xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
-            Quiz App
-          </h3>
-          <span className={`text-xs md:text-sm cyberpunk-text ${
-            darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'
-          }`}>
-            Sep 2024 - Oct 2024
-          </span>
-        </div>
-        <p className={`text-sm md:text-base mb-4 ${
-          darkMode ? 'text-white/80' : 'text-gray-700'
-        }`}>
-          A dynamic, interactive platform that tests users' knowledge across multiple programming 
-          languages such as JavaScript, Python, React, SQL, C, and Java.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://github.com/mehara-rothila/Quiz-App"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center text-sm md:text-base transition-colors duration-200 cyberpunk-text ${
-              darkMode 
-                ? 'text-[#FF008C] hover:text-[#00F0FF]'
-                : 'text-[#FF008C] hover:text-[#00F0FF]'
-            }`}
-          >
-            <Github size={16} className="mr-1" /> View Code
-          </a>
-          <a
-            href="https://mrr-quiz.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center text-sm md:text-base transition-colors duration-200 cyberpunk-text ${
-              darkMode 
-                ? 'text-[#00F0FF] hover:text-[#FF008C]'
-                : 'text-[#00F0FF] hover:text-[#FF008C]'
-            }`}
-          >
-            <ExternalLink size={16} className="mr-1" /> Live Demo
-          </a>
-        </div>
-      </div>
+</section>
 
-      {/* Project 2 */}
-      <div className={`cyberpunk-card p-5 md:p-6 rounded-xl transform hover:-translate-y-2 
-        transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-          <h3 className="text-lg md:text-xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
-            Portfolio Website
-          </h3>
-          <span className={`text-xs md:text-sm cyberpunk-text ${
-            darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'
-          }`}>
-            Oct 2024
-          </span>
-        </div>
-        <p className={`text-sm md:text-base mb-4 ${
-          darkMode ? 'text-white/80' : 'text-gray-700'
-        }`}>
-          A cyberpunk-themed personal portfolio website built with React and Tailwind CSS, 
-          featuring custom animations, theme switching, and responsive design.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://github.com/mehara-rothila/portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center text-sm md:text-base transition-colors duration-200 cyberpunk-text ${
-              darkMode 
-                ? 'text-[#FF008C] hover:text-[#00F0FF]'
-                : 'text-[#FF008C] hover:text-[#00F0FF]'
-            }`}
-          >
-            <Github size={16} className="mr-1" /> View Code
-          </a>
-          <a
-            href="https://portf-cyber.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center text-sm md:text-base transition-colors duration-200 cyberpunk-text ${
-              darkMode 
-                ? 'text-[#00F0FF] hover:text-[#FF008C]'
-                : 'text-[#00F0FF] hover:text-[#FF008C]'
-            }`}
-          >
-            <ExternalLink size={16} className="mr-1" /> Live Demo
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>{/* Footer */}
+
+
+{/* Projects Section */}
+<section id="projects" className="cyberpunk-section py-16 md:py-20">
+ <div className="max-w-7xl mx-auto px-4">
+   <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 cyberpunk-text">
+     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF008C] to-[#00F0FF] animate-text-shimmer">
+       Projects
+     </span>
+   </h2>
+   <div className="grid grid-cols-1 gap-8">
+     {/* Project 1 - Quiz App */}
+     <div className={`cyberpunk-card p-6 rounded-xl transform hover:-translate-y-2 
+       transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
+       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+         <h3 className="text-xl md:text-2xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
+           Quiz App
+         </h3>
+         <span className={`text-sm cyberpunk-text ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Sep 2024 - Oct 2024
+         </span>
+       </div>
+       <p className={`text-sm md:text-base mb-6 ${darkMode ? 'text-white/80' : 'text-gray-700'}`}>
+         A dynamic, interactive platform that tests users' knowledge across multiple programming 
+         languages such as JavaScript, Python, React, SQL, C, and Java.
+       </p>
+       <div className="flex flex-wrap gap-4">
+         <a href="https://github.com/mehara-rothila/Quiz-App"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#FF008C] hover:text-[#00F0FF]' : 'text-[#FF008C] hover:text-[#00F0FF]'
+           }`}>
+           <Github size={16} className="mr-1" /> View Code
+         </a>
+         <a href="https://mrr-quiz.netlify.app/"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#00F0FF] hover:text-[#FF008C]' : 'text-[#00F0FF] hover:text-[#FF008C]'
+           }`}>
+           <ExternalLink size={16} className="mr-1" /> Live Demo
+         </a>
+       </div>
+     </div>
+
+     {/* Project 2 - Portfolio */}
+     <div className={`cyberpunk-card p-6 rounded-xl transform hover:-translate-y-2 
+       transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
+       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+         <h3 className="text-xl md:text-2xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
+           Portfolio Website
+         </h3>
+         <span className={`text-sm cyberpunk-text ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Oct 2024
+         </span>
+       </div>
+       <p className={`text-sm md:text-base mb-6 ${darkMode ? 'text-white/80' : 'text-gray-700'}`}>
+         A cyberpunk-themed personal portfolio website built with React and Tailwind CSS, 
+         featuring custom animations, theme switching, and responsive design.
+       </p>
+       <div className="flex flex-wrap gap-4">
+         <a href="https://github.com/mehara-rothila/portfolio"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#FF008C] hover:text-[#00F0FF]' : 'text-[#FF008C] hover:text-[#00F0FF]'
+           }`}>
+           <Github size={16} className="mr-1" /> View Code
+         </a>
+         <a href="https://portf-cyber.netlify.app/"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#00F0FF] hover:text-[#FF008C]' : 'text-[#00F0FF] hover:text-[#FF008C]'
+           }`}>
+           <ExternalLink size={16} className="mr-1" /> Live Demo
+         </a>
+       </div>
+     </div>
+ {/* Project 3 - UNIVOTE */}
+ <div className={`cyberpunk-card p-6 rounded-xl transform hover:-translate-y-2 
+       transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
+       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+         <h3 className="text-xl md:text-2xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
+           UNIVOTE
+         </h3>
+         <span className={`text-sm cyberpunk-text ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Jul 2024 - Oct 2024
+         </span>
+       </div>
+
+       <p className={`text-sm md:text-base mb-6 ${darkMode ? 'text-white/80' : 'text-gray-700'}`}>
+         A secure and inclusive Electronic Voting System designed for all, including individuals with disabilities. 
+         Features biometric authentication, real-time monitoring, and innovative accessibility options.
+       </p>
+
+      {/* Images - Adjusted to show full images */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+ <div className="relative group w-full">
+   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF008C] to-[#00F0FF] rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+   <div className="relative w-full rounded-lg border border-[#FF008C]/20 overflow-hidden bg-black/20 p-4">
+     <img 
+       src={require('../Images/univote-enclosure-side.jpg')} 
+       alt="UNIVOTE Enclosure" 
+       className="w-auto h-auto max-w-full max-h-[250px] mx-auto hover:scale-95 transition-transform duration-300"
+     />
+   </div>
+ </div>
+ <div className="relative group w-full">
+   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF008C] to-[#00F0FF] rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+   <div className="relative w-full rounded-lg border border-[#FF008C]/20 overflow-hidden bg-black/20 p-4">
+     <img 
+       src={require('../Images/univote-system-main.jpg')} 
+       alt="UNIVOTE System" 
+       className="w-auto h-auto max-w-full max-h-[250px] mx-auto hover:scale-95 transition-transform duration-300"
+     />
+   </div>
+ </div>
+</div>
+
+       <div className="mb-6">
+         <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Key Features
+         </h4>
+         <ul className="space-y-2">
+           {[
+             'Secure admin authentication & QR code scanning',
+             'Facial recognition & fingerprint verification',
+             'Real-time clock management with LCD display',
+             'Special puff method for voters with paralysis',
+             'Dual-mode operation (Automatic/Manual)'
+           ].map((feature) => (
+             <li key={feature} className={`text-sm flex items-center ${
+               darkMode ? 'text-white/80' : 'text-gray-700'
+             }`}>
+               <span className="text-[#FF008C] mr-2">▸</span> {feature}
+             </li>
+           ))}
+         </ul>
+       </div>
+
+       <div className="flex gap-4">
+         <a href="https://github.com/mehara-rothila/UNIVOTE"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#FF008C] hover:text-[#00F0FF]' : 'text-[#FF008C] hover:text-[#00F0FF]'
+           }`}>
+           <Github size={16} className="mr-1" /> View Code
+         </a>
+       </div>
+     </div>
+
+     {/* Project 4 - Comic Portal */}
+     <div className={`cyberpunk-card p-6 rounded-xl transform hover:-translate-y-2 
+       transition-all duration-300 ${darkMode ? 'bg-black/30' : 'bg-white/90'}`}>
+       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+         <h3 className="text-xl md:text-2xl cyberpunk-text text-[#FF008C] mb-2 sm:mb-0">
+           Comic Portal [In Development]
+         </h3>
+         <span className={`text-sm cyberpunk-text ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Nov 2024 - Present
+         </span>
+       </div>
+
+       <p className={`text-sm md:text-base mb-6 ${darkMode ? 'text-white/80' : 'text-gray-700'}`}>
+         Currently developing a comprehensive web-based comic management platform that features role-based
+         authentication, CRUD operations, and a dynamic user interface.
+       </p>
+
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+         <div className="relative group">
+           <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF008C] to-[#00F0FF] rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+           <div className="relative w-full h-48 rounded-lg border border-[#FF008C]/20 overflow-hidden bg-black/20">
+             <img src={require('../Images/comic-portal-admin-dashboard.png')} alt="Comic Portal Dashboard" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"/>
+           </div>
+         </div>
+         <div className="relative group">
+           <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF008C] to-[#00F0FF] rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+           <div className="relative w-full h-48 rounded-lg border border-[#FF008C]/20 overflow-hidden bg-black/20">
+             <img src={require('../Images/comic-portal-featured-carousel.png')} alt="Comic Portal Interface" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"/>
+           </div>
+         </div>
+       </div>
+
+       <div className="grid md:grid-cols-2 gap-6 mb-6">
+         <div>
+           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+             Technical Stack
+           </h4>
+           <ul className="space-y-2">
+             {[
+               'Vue.js 3 with Vite',
+               'Laravel Sanctum for authentication',
+               'RESTful API architecture',
+               'MySQL Database',
+               'Advanced middleware'
+             ].map((tech) => (
+               <li key={tech} className={`text-sm flex items-center ${
+                 darkMode ? 'text-white/80' : 'text-gray-700'
+               }`}>
+                 <span className="text-[#FF008C] mr-2">▸</span> {tech}
+               </li>
+             ))}
+           </ul>
+         </div>
+
+         <div>
+           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+             Key Features
+           </h4>
+           <ul className="space-y-2">
+             {[
+               'Role-based authentication system',
+               'Dynamic featured content management',
+               'Real-time admin statistics dashboard',
+               'Category-based comic organization',
+               'Interactive comic browsing interface'
+             ].map((feature) => (
+               <li key={feature} className={`text-sm flex items-center ${
+                 darkMode ? 'text-white/80' : 'text-gray-700'
+               }`}>
+                 <span className="text-[#FF008C] mr-2">▸</span> {feature}
+               </li>
+             ))}
+           </ul>
+         </div>
+       </div>
+
+       <div className="mb-6">
+         <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#00F0FF]' : 'text-[#00F0FF]'}`}>
+           Ongoing Development
+         </h4>
+         <ul className="space-y-2">
+           {[
+             'Enhanced search and filtering features',
+             'User preferences system',
+             'Performance optimization',
+             'Mobile responsiveness',
+             'Content recommendation engine'
+           ].map((item) => (
+             <li key={item} className={`text-sm flex items-center ${
+               darkMode ? 'text-white/80' : 'text-gray-700'
+             }`}>
+               <span className="text-[#FF008C] mr-2">▸</span> {item}
+             </li>
+           ))}
+         </ul>
+       </div>
+
+       <div className="flex gap-4">
+         <a href="https://github.com/mehara-rothila/comic-portal"
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`inline-flex items-center text-sm transition-colors duration-200 cyberpunk-text ${
+             darkMode ? 'text-[#FF008C] hover:text-[#00F0FF]' : 'text-[#FF008C] hover:text-[#00F0FF]'
+           }`}>
+           <Github size={16} className="mr-1" /> View Code
+         </a>
+       </div>
+     </div>
+   </div>
+ </div>
+</section>
+
+{/* Footer */}
 <footer className={`py-6 md:py-8 backdrop-blur-md ${
   darkMode ? 'bg-black/50' : 'bg-white/50'
 }`}>
